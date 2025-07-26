@@ -1,4 +1,4 @@
-# `intexgral` – Integral package for LaTeX
+# `intexgral` – A LaTeX package for typesetting integrals
 
 ## Description
 
