@@ -1,0 +1,27 @@
+\xpg@aux {}{english}
+\contentsline {section}{\numberline {1}Package options}{2}{section.0.1}%
+\contentsline {section}{\numberline {2}Presentation of the main macro}{2}{section.0.2}%
+\contentsline {section}{\numberline {3}List of keys}{3}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}Integration limits}{3}{subsection.0.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Defining the limits}{3}{subsubsection.0.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Separate the integral}{4}{subsubsection.0.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Chosing the limits' positioning}{4}{subsubsection.0.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Symbol (and more about limits)}{4}{subsection.0.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Selecting a symbol}{5}{subsubsection.0.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Generating many integrals}{5}{subsubsection.0.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Defining limits (when there is only one symbol)}{5}{subsubsection.0.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Combining symbol and limit}{6}{subsubsection.0.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Recurring limits motif}{6}{subsubsection.0.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}Differentials}{7}{subsection.0.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Specifying the variables}{7}{subsubsection.0.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Including the Jacobian}{7}{subsubsection.0.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Modifying the symbol}{8}{subsubsection.0.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Opting for the starred variant}{8}{subsubsection.0.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Designating options}{8}{subsubsection.0.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}Creating a path integral}{9}{subsubsection.0.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}Customising the vector}{9}{subsubsection.0.3.3.7}%
+\contentsline {section}{\numberline {4}Auxiliary macros}{9}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}Loading new symbols}{9}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Looking back at limits}{10}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Looking back at differentials}{11}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}Custom differentials placement}{11}{subsection.0.4.4}%
