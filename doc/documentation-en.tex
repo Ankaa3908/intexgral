@@ -447,11 +447,11 @@ As with symbols, lower bounds sometimes follow common patterns that can be gener
 
 \subsubsection{Including the Jacobian}
 
-\begin{function}{jacobien}
+\begin{function}{jacobian}
   \begin{syntax}
     \meta{boolean}\hfill(default: false)
   \end{syntax}
-  This key enables/disables the display of the Jacobian when defined by \cs{NewDifferentialKeyword} (see)
+  This key enables/disables the display of the Jacobian when defined by \cs{NewDifferentialKeyword} (see \ref{subsec:diff})
 \end{function}
 
 \begin{codehigh}
@@ -663,7 +663,7 @@ Using one of the previous examples, we could modify the expression of the integr
 
 \textbf{Important:} due to the implementation of \cs{NewLimitsKeyword} and its variants, the user \emph{must} follow the package's convention on limits order, even if \texttt{invert-limits} is set to \texttt{true}.
 
-\subsection{Looking back at differentials}
+\subsection{Looking back at differentials}\label{subsec:diff}
 
 \begin{function}{\NewDifferentialKeyword, \RenewDifferentialKeyword, \ProvideDifferentialKeyword, \DeclareDifferentialKeyword}
   \begin{syntax}
@@ -690,7 +690,7 @@ Using one of the previous examples, we could modify the expression of the integr
   \centering
   \begin{tabular}{l c c}
     \toprule
-    Keyword & Differentials & Jacobien \\
+    Keyword & Differentials & Jacobian \\
     \midrule
     cartesian & $x, y, z$ & -- \\
     polar & $r, \theta$ & $ r $ \\

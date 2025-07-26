@@ -1,5 +1,6 @@
 % arara: lualatex
 % arara: lualatex
+% arara: clean: { extensions: [ aux, out, log, glo, hd, idx, toc ] }
 
 \documentclass{l3doc}
 
@@ -26,7 +27,8 @@
 
 \setmathfont{NewCMMath-Regular.otf}
 
-\usepackage{intexgral}
+\usepackage{source/intexgral}
+
 \NewDifferential{\feynmandiff}{\mathcal{D}}
 \RenewDifferential{\odif}{\symup{d}}
 \usepackage{codehigh}
@@ -448,7 +450,7 @@ Tous comme pour les symboles, les bornes suivent parfois des schémas courants q
   \begin{syntax}
     \meta{boolean}\hfill(défaut: false)
   \end{syntax}
-  Cette clé active/désactive l'affichage du jacobien lorsque défini par \cs{NewDifferentialKeyword} (voir )
+  Cette clé active/désactive l'affichage du jacobien lorsque défini par \cs{NewDifferentialKeyword} (voir \ref{subsec:diff})
 \end{function}
 
 \begin{codehigh}
@@ -660,7 +662,7 @@ En reprenant l'un des exemples précédents, ont pourrait modifier l'expression 
 
 \textbf{Important:} dû à l'implémentation de \cs{NewLimitsKeyword} et ses variantes, l'utilisateur \emph{doit} suivre la convention d'ordre des bornes du package, même si \texttt{invert-limits} est fixé à \texttt{true}.
 
-\subsection{Retour sur les différentielles}
+\subsection{Retour sur les différentielles}\label{subsec:diff}
 
 \begin{function}{\NewDifferentialKeyword, \RenewDifferentialKeyword, \ProvideDifferentialKeyword, \DeclareDifferentialKeyword}
   \begin{syntax}
