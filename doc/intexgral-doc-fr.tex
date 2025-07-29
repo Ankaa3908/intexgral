@@ -63,6 +63,12 @@
 
 \GetFileInfo{intexgral.sty}
 
+\ExplSyntaxOn
+\seq_set_split:Nne \l_tmpa_seq { - } { \filedate }
+\seq_reverse:N \l_tmpa_seq
+\gdef\filedate{ \seq_use:Nnnn \l_tmpa_seq {} { - } { - } }
+\ExplSyntaxOff
+
 \title{%
   L'extension \pkg{intexgral}%
   \thanks{Ce fichier décrit la version \fileversion, publiée le \filedate}%
@@ -73,7 +79,7 @@
   \thanks{E-mail: \href{mailto:vdao.texdev@gmail.com}{vdao.texdev@gmail.com}}
 }
 
-\date{Publié \filedate}
+\date{Publiée le \filedate}
 
 \maketitle
 
@@ -81,7 +87,7 @@
 
 \begin{abstract}
 
-Tandis que la composition d'intégrales est très fréquent en \LaTeX, cette dernière se révèle souvent peu pratique. Lorsque l'expression devient complexe, il devient alors difficile d'en modifier les différents éléments dans un code source peu lisible. Pour répondre à ce problème, le package \pkg{intexgral} met à disposition une macro centrale dont le seul argument est l'intégrande. Tout le reste (les bornes, les différentielles\dots) pourra aisément être modifié grâce à une interface \meta{clés = valeur}. Contrairement à la méthode classique, où l'utilisateur choisit l'ordre des bornes avec les charactères actifs \verb|_| et \verb|^|, le package a dû fixer une convention. Ainsi, pour les deux clés gérant les bornes qui seront présentées, l'entrée supposée sera \verb|_|\meta{borne inférieure}\verb|^|\meta{borne supérieure}. Ce package étant écrit en \pkg{expl3}, il dépend donc des packages \LaTeX3 \pkg{l3kernel} et \pkg{l3package}. De plus, \pkg{intexgral} utilise le package \pkg{derivative} afin de faciliter la manipulation de différentielles.
+Tandis que la composition d'intégrales est très fréquente en \LaTeX, cette dernière se révèle souvent peu pratique. Lorsque l'expression devient complexe, il devient alors difficile d'en modifier les différents éléments dans un code source peu lisible. Pour répondre à ce problème, le package \pkg{intexgral} met à disposition une macro centrale dont le seul argument est l'intégrande. Tout le reste (les bornes, les différentielles\dots) pourra aisément être modifié grâce à une interface \meta{clés = valeur}. Contrairement à la méthode classique, où l'utilisateur choisit l'ordre des bornes avec les caractères actifs \verb|_| et \verb|^|, le package a dû fixer une convention. Ainsi, pour les deux clés gérant les bornes qui seront présentées, l'entrée supposée sera \verb|_|\meta{borne inférieure}\verb|^|\meta{borne supérieure}. Ce package étant écrit en \pkg{expl3}, il dépend donc des packages \LaTeX3 \pkg{l3kernel} et \pkg{l3package}. De plus, \pkg{intexgral} utilise le package \pkg{derivative} afin de faciliter la manipulation de différentielles.
 
 \end{abstract}
 
@@ -614,10 +620,10 @@ V_\textrm{sphère} =
 Il est courrant de devoir renseigner les même bornes dans une intégrale. Pour faciliter leur écriture, les clé(s) \texttt{limits(*)} accepte également un mot-clé désignant des bornes définies par l'un de ces quatre macros:
 \end{function}
 \begin{itemize}
-  \item \cs{NewLimitsKeyword} crée un nouveau mot clé et émet une erreur s'il existe déjà.
-  \item \cs{RenewLimitsKeyword} redéfinit un mot clé et émet une erreur s'il n'existe pas déjà. 
-  \item \cs{ProvideLimitsKeyword} ne crée un nouveau mot clé que s'il n'existe pas déjà. Aucun message ne sera émis dans le cas échéant.
-  \item \cs{DeclareLimitsKeyword} crée un nouveau mot clé quoiqu'il en soit, écrasant toute définition préalable.
+  \item \cs{NewLimitsKeyword} crée un nouveau mot-clé et émet une erreur s'il existe déjà.
+  \item \cs{RenewLimitsKeyword} redéfinit un mot-clé et émet une erreur s'il n'existe pas déjà. 
+  \item \cs{ProvideLimitsKeyword} ne crée un nouveau mot-clé que s'il n'existe pas déjà. Aucun message ne sera émis dans le cas échéant.
+  \item \cs{DeclareLimitsKeyword} crée un nouveau mot-clé quoiqu'il en soit, écrasant toute définition préalable.
 \end{itemize}
 
 En reprenant l'un des exemples précédents, ont pourrait modifier l'expression de l'intégrale de la façon suivante:
@@ -656,7 +662,7 @@ En reprenant l'un des exemples précédents, ont pourrait modifier l'expression 
     time & $0, T$\\
     \bottomrule
   \end{tabular}
-  \caption{Liste des mot-clés pour les bornes.}
+  \caption{Liste des mots-clés pour les bornes.}
 \end{table}
 
 \textbf{Important:} dû à l'implémentation de \cs{NewLimitsKeyword} et ses variantes, l'utilisateur \emph{doit} suivre la convention d'ordre des bornes du package, même si \texttt{invert-limits} est fixé à \texttt{true}.
@@ -667,7 +673,7 @@ En reprenant l'un des exemples précédents, ont pourrait modifier l'expression 
   \begin{syntax}
     \marg{mot-clé}\marg{différentielles}\oarg{jacobien}
   \end{syntax}
-De façon similaire, les mêmes groupes de différentielles réapparaissent souvent. On peut donc également définir des mots clés dont la liste est déjà prédéfinie (les variantes ont le même comportement). 
+De façon similaire, les mêmes groupes de différentielles réapparaissent souvent. On peut donc également définir des mots-clés dont la liste est déjà prédéfinie (les variantes ont le même comportement). 
 \end{function}
 
 La seule différence est que l'on peut en plus spécifier un jacobien. Ce dernier devra prendre la forme d'une clist. Ceci permet de pouvoir séparer le jacobien lorsque le mode \texttt{int-split} est activé. Son affichage est contrôlé par la clé \texttt{jacobian} expliquée précedemment.
@@ -698,7 +704,7 @@ La seule différence est que l'on peut en plus spécifier un jacobien. Ce dernie
     spherical & $ r, \theta, \phi $ & $ r, \sin\theta $ \\
     \bottomrule
   \end{tabular}
-  \caption{Liste des mot-clés pour les différentielles.}
+  \caption{Liste des mots-clés pour les différentielles.}
 \end{table}
 
 \subsection{Emplacements personnalisés des différentielles}
