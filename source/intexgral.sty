@@ -21,7 +21,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \RequirePackage{expl3}[2025-05-14]
 \RequirePackage{l3keys2e}
-\ProvidesExplPackage{intexgral}{2025-07-26}{1.0.0}{A LaTeX package for typesetting integrals.}
+\ProvidesExplPackage{intexgral}{2025-07-29}{1.1.0}{A LaTeX package for typesetting integrals.}
 
 \@ifpackagelater{expl3}{2025-05-14}{}{\PackageError{expl3~version~too~old.}}
 
@@ -736,6 +736,48 @@
     { 
       int-symb=\c__intexgral_pkg_oiiint_symbol_tl, 
       lower-lim=#1
+    },
+
+  single* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_int_symbol_tl, 
+      upper-lim=#1
+    },
+
+  double* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_iint_symbol_tl, 
+      upper-lim=#1
+    },
+
+  triple* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_iiint_symbol_tl, 
+      upper-lim=#1
+    },
+
+  quadruple* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_iiiint_symbol_tl, 
+      upper-lim=#1
+    },
+
+  contour* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_oint_symbol_tl, 
+      upper-lim=#1
+    },
+
+  surface* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_oiint_symbol_tl, 
+      upper-lim=#1
+    },
+
+  volume* .meta:n = 
+    { 
+      int-symb=\c__intexgral_pkg_oiiint_symbol_tl, 
+      upper-lim=#1
     },
 
   % LIMITS SHORTCUTS

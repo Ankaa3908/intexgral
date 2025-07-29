@@ -58,20 +58,21 @@
 }
 
 \NewDocumentCommand{\sarg}{}{*}
+\NewDocumentCommand{\filecreationdate}{}{26-07-2025}
 
 \begin{document}
 
 \GetFileInfo{intexgral.sty}
 
 \ExplSyntaxOn
-\seq_set_split:Nne \l_tmpa_seq { - } { \filedate }
-\seq_reverse:N \l_tmpa_seq
-\gdef\filedate{ \seq_use:Nnnn \l_tmpa_seq {} { - } { - } }
+\seq_gset_split:Nne \g_tmpa_seq { - } { \filedate }
+\seq_reverse:N \g_tmpa_seq
+\gdef\filedate{ \seq_use:Nnnn \g_tmpa_seq {} { - } { - } }
 \ExplSyntaxOff
 
 \title{%
   L'extension \pkg{intexgral}%
-  \thanks{Ce fichier décrit la version \fileversion, publiée le \filedate}%
+  \thanks{Ce fichier décrit la version \fileversion, mise à jour le \filedate}%
 }
 
 \author{%
@@ -79,7 +80,7 @@
   \thanks{E-mail: \href{mailto:vdao.texdev@gmail.com}{vdao.texdev@gmail.com}}
 }
 
-\date{Publiée le \filedate}
+\date{Publiée le \filecreationdate}
 
 \maketitle
 
@@ -212,7 +213,7 @@ La grande force de \texttt{limits} est qu'elle permet de spécifier les bornes d
   \begin{syntax}
     \meta{boolean}\hfill(défaut: false)
   \end{syntax}
-  Cette clé sépare les différentes variables de l'intégrales et les isole. Il est donc nécessaire de l'utiliser \emph{avant} \texttt{limits} afin que celle ci sache dans quel mode opérer. De plus, cette clé requiert que l'on indique comment séparer l'intégrande. Cette étape supplémentaire se réalise en suivant la même logique que pour les bornes, c'est-à-dire en utilisant le point-virgule. 
+  Cette clé sépare les différentes variables de l'intégrale et les isole. Il est donc nécessaire de l'utiliser \emph{avant} \texttt{limits} afin que celle ci sache dans quel mode opérer. De plus, cette clé requiert que l'on indique comment séparer l'intégrande. Cette étape supplémentaire se réalise en suivant la même logique que pour les bornes, c'est-à-dire en utilisant le point-virgule. 
 \end{function}
 
 \begin{codehigh}
@@ -260,7 +261,7 @@ Pour bien fonctionner, il est évident que les clés \texttt{limits} et \texttt{
 
 Les clés \texttt{limits} et \texttt{limits*} se révèlent très utiles lorsque l'expression finale d'une intégrale est déterminée (autrement dit, lorsque les bornes de chaque variable ont été définies). Cependant, cela couvre seulement\dots\ l'expression finale! Pour des cas plus généraux, elles sont relativement malcommodes. Pour composer une intégrale double sur une surface S, on devrait écrire \verb|limits={,;,S}|. Il va sans dire que c'est assez maladapté pour l'utilisateur et peu optimal pour le package. Par ailleurs, le glyphe ne serait pas correct. L'ensemble des clés à suivre propose donc une façon de modifier facilement le symbole intégrale et les bornes.
 
-\subsubsection{Séléctionner le symbole}
+\subsubsection{Sélectionner le symbole}
 
 \begin{function}{int-symb}
   \begin{syntax}
@@ -343,15 +344,15 @@ Les clés précedentes (sans compter \texttt{nint}) couvrent un usage --- je l'e
 
 \begin{function}{single, double, triple, quadruple, contour, surface, volume}
   \begin{syntax}
-    \marg{borne inférieure}\hfill(symbole: \cs{int})
-    \marg{borne inférieure}\hfill(symbole: \cs{iint})
-    \marg{borne inférieure}\hfill(symbole: \cs{iiint})
-    \marg{borne inférieure}\hfill(symbole: \cs{iiiint})
-    \marg{borne inférieure}\hfill(symbole: \cs{oint})
-    \marg{borne inférieure}\hfill(symbole: \cs{oiint})
-    \marg{borne inférieure}\hfill(symbole: \cs{oiiint})
+    \sarg\marg{borne}\hfill(symbole: \cs{int})
+    \sarg\marg{borne}\hfill(symbole: \cs{iint})
+    \sarg\marg{borne}\hfill(symbole: \cs{iiint})
+    \sarg\marg{borne}\hfill(symbole: \cs{iiiint})
+    \sarg\marg{borne}\hfill(symbole: \cs{oint})
+    \sarg\marg{borne}\hfill(symbole: \cs{oiint})
+    \sarg\marg{borne}\hfill(symbole: \cs{oiiint})
   \end{syntax}
-  Toutes ces clés permettent de regrouper l'action de \texttt{int-symb} et \texttt{lower-lim} ensemble, facilitant le choix du symbole et de la borne inférieure en même temps. La valeur de la clé est optionnelle, auquel cas le symbole changera mais la borne restera vide.
+  Toutes ces clés permettent de regrouper l'action de \texttt{int-symb} et \texttt{lower-lim}/\texttt{upper-lim} ensemble, facilitant le choix du symbole et de la borne en même temps. La valeur de la clé est optionnelle, auquel cas le symbole changera mais la borne restera vide. Les clés sans astérisques modifient la borne inférieure, tandis que leurs variantes étoilées affectent la borne supérieure. 
 \end{function}
 
 \begin{codehigh}
@@ -608,7 +609,7 @@ V_\textrm{sphère} =
   \begin{syntax}
     \marg{csname}
   \end{syntax}
-  Si vous utilisez un package définissant des symboles ne faisants pas partie d'\pkg{unicode-math}, vous pouvez les charger en utilisant la macro \cs{NewIntegralSymbol} dans le préambule. Il seront dès lors accessible avec la clé \texttt{int-symb}. L'argument devra prendre la forme d'une commande \emph{sans antislash}: par exemple \verb|NewIntegralSymbol{myint}|. Veuillez noter que \cs{NewIntegralSymbol} n'est qu'un moyen pour le package de reconnaître les symboles préexistants et leurs macros de façon interne. Ce n'est en rien une manière de créer un nouveau glyphe. Il en va de la responsabilité de l'utilisateur de charger les packages nécessaires pour que les symboles voulus soient définis.
+  Si vous utilisez un package définissant des symboles ne faisant pas partie d'\pkg{unicode-math}, vous pouvez les charger en utilisant la macro \cs{NewIntegralSymbol} dans le préambule. Il seront dès lors accessible avec la clé \texttt{int-symb}. L'argument devra prendre la forme d'une commande \emph{sans antislash}: par exemple \verb|NewIntegralSymbol{myint}|. Veuillez noter que \cs{NewIntegralSymbol} n'est qu'un moyen pour le package de reconnaître les symboles préexistants et leurs macros de façon interne. Ce n'est en rien une manière de créer un nouveau glyphe. Il en va de la responsabilité de l'utilisateur de charger les packages nécessaires pour que les symboles voulus soient définis.
 \end{function}
 
 \subsection{Retour sur les bornes}
@@ -617,7 +618,7 @@ V_\textrm{sphère} =
   \begin{syntax}
     \marg{mot-clé}\marg{bornes}
   \end{syntax}
-Il est courrant de devoir renseigner les même bornes dans une intégrale. Pour faciliter leur écriture, les clé(s) \texttt{limits(*)} accepte également un mot-clé désignant des bornes définies par l'un de ces quatre macros:
+Il est courrant de devoir renseigner les même bornes dans une intégrale. Pour faciliter leur écriture, les clé(s) \texttt{limits(*)} accepte également un mot-clé désignant des bornes définies par l'une de ces quatre macros:
 \end{function}
 \begin{itemize}
   \item \cs{NewLimitsKeyword} crée un nouveau mot-clé et émet une erreur s'il existe déjà.
@@ -626,7 +627,7 @@ Il est courrant de devoir renseigner les même bornes dans une intégrale. Pour 
   \item \cs{DeclareLimitsKeyword} crée un nouveau mot-clé quoiqu'il en soit, écrasant toute définition préalable.
 \end{itemize}
 
-En reprenant l'un des exemples précédents, ont pourrait modifier l'expression de l'intégrale de la façon suivante:
+En reprenant l'un des exemples précédents, on pourrait modifier l'expression de l'intégrale de la façon suivante:
 
 \begin{codehigh}
 \integral[

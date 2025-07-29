@@ -58,6 +58,8 @@
 }
 
 \NewDocumentCommand{\sarg}{}{*}
+\NewDocumentCommand{\filecreationdate}{}{2025-07-26}
+
 
 \begin{document}
 
@@ -65,7 +67,7 @@
 
 \title{%
   The \pkg{intexgral} package%
-  \thanks{This file describes \fileversion, released \filedate}%
+  \thanks{This file describes \fileversion, updated \filedate}%
 }
 
 \author{%
@@ -73,7 +75,7 @@
   \thanks{E-mail: \href{mailto:vdao.texdev@gmail.com}{vdao.texdev@gmail.com}}
 }
 
-\date{Released \filedate}
+\date{Released \filecreationdate}
 
 \maketitle
 
@@ -338,15 +340,15 @@ The previous keys (excluding \texttt{nint}) cover a fairly --- I hope --- genera
 
 \begin{function}{single, double, triple, quadruple, contour, surface, volume}
   \begin{syntax}
-    \marg{lower limit}\hfill(symbol: \cs{int})
-    \marg{lower limit}\hfill(symbol: \cs{iint})
-    \marg{lower limit}\hfill(symbol: \cs{iiint})
-    \marg{lower limit}\hfill(symbol: \cs{iiiint})
-    \marg{lower limit}\hfill(symbol: \cs{oint})
-    \marg{lower limit}\hfill(symbol: \cs{oiint})
-    \marg{lower limit}\hfill(symbol: \cs{oiiint})
+    \sarg\marg{limit}\hfill(symbol: \cs{int})
+    \sarg\marg{limit}\hfill(symbol: \cs{iint})
+    \sarg\marg{limit}\hfill(symbol: \cs{iiint})
+    \sarg\marg{limit}\hfill(symbol: \cs{iiiint})
+    \sarg\marg{limit}\hfill(symbol: \cs{oint})
+    \sarg\marg{limit}\hfill(symbol: \cs{oiint})
+    \sarg\marg{limit}\hfill(symbol: \cs{oiiint})
   \end{syntax}
-  All these keys allow the action of \texttt{int-symb} and \texttt{lower-lim} to be grouped, making it easier to choose the symbol and the lower bound at the same time. The value of the key is optional, in which case the symbol will change, but the bound will remain empty.  
+  All these keys allow the action of \texttt{int-symb} and \texttt{lower-lim}/\texttt{upper-lim} to be grouped together, making it easier to choose the symbol and the bound at the same time. The value of the key is optional, in which case the symbol will change, but the bound will remain empty. The keys without asterisks modify the lower limit, whereas their starred variants affect the upper limit.
 \end{function}
 
 \begin{codehigh}
