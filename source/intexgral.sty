@@ -341,11 +341,7 @@
 
 \cs_new_protected:Nn \__intexgral_pkg_print_integral: {
 
-  \seq_log:N \l__intexgral_pkg_differential_seq
-
   \__intexgral_pkg_integral_preconfiguration:
-
-  \seq_log:N \l__intexgral_pkg_differential_seq
 
   \int_step_inline:nn { \seq_count:N \l__intexgral_pkg_integral_symbol_seq }
     {
