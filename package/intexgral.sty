@@ -61,12 +61,6 @@
   (integral~no.~\int_use:N\g__intexgral_pkg_integral_number_int\c_space_tl\msg_line_context:)
 }
 
-\msg_new:nnnn { intexgral } { integral-alr-def }
-  { Macro~\token_to_str:N\integral~already~defined. }
-  { 
-    It~seems~like~\token_to_str:N\integral~has~been~defined~by~another~package.I~will~overwrite~its~current~definition,hoping~it~won't~affect~your~document~much. 
-  }
-
 \msg_new:nnnn { intexgral } { diff-group-alr-def }
   { Differential~group~"\tl_trim_spaces:n{#1}"~already~defined. }
   { You~should~use~\token_to_str:N\RenewDifferentialKeyword~instead. }
@@ -993,12 +987,6 @@
 \NewDifferentialKeyword{polar}{r, \theta}[r]
 \NewDifferentialKeyword{cylindrical}{r, \theta, z}[r]
 \NewDifferentialKeyword{spherical}{r, \theta, \phi}[r^2, \sin\theta]
-
-\cs_if_free:NF \integral
-  {
-    \msg_warning:nn { intexgral } { integral-alr-def }
-    \cs_undefine:N \integral
-  }
 
 \NewDocumentCommand{\integral}{ O{} m }{
   \keys_set:nn { integral } { #1 }
